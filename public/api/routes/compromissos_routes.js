@@ -4,7 +4,7 @@ module.exports = function(app) {
 
   // Compromissos Routes
   app.route('/compromissos')
-    .get(compromissos.listar_todos_compromissos)
+    .get(compromissos.listar_todos)
     .post(compromissos.criar_compromisso);
 
   app.route('/compromissos/:compromissoID')
