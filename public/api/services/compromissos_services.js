@@ -12,8 +12,8 @@ exports.listar_todos = function(req, res) {
 };
 
 exports.criar_compromisso = function(req, res) {
-  var new_task = new Compromisso(req.body);
-  new_task.save(function(err, compromisso) {
+  var novo_compromisso = new Compromisso(req.body);
+  novo_compromisso.save(function(err, compromisso) {
     if (err)
       res.send(err);
     res.json(compromisso);
@@ -42,7 +42,7 @@ exports.atualizar_compromisso = function(req, res) {
 exports.apagar_compromisso = function(req, res) {
   Compromisso.remove({
     _id: req.params.compromissoID
-  }, function(err, task) {
+  }, function(err, compromisso) {
     if (err)
       res.send(err);
     res.json({ message: 'Compromisso removido com sucesso!' });
