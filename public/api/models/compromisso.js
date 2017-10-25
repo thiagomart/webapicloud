@@ -1,9 +1,7 @@
 'use strict';
-var mongoose = require('mongoose');
-var schema = mongoose.Schema;
 
-
-var schema_compromisso = new Schema({
+module.exports = function(mongoose) {
+var schema_compromisso = new mongoose.Schema({
   Titulo: {
     type: String
   },  
@@ -21,4 +19,7 @@ var schema_compromisso = new Schema({
   }
 });
 
-module.exports = mongoose.model('Compromissos', schema_compromisso);
+mongoose.model('Compromissos', schema_compromisso);
+
+}
+
