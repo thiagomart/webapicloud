@@ -25,7 +25,6 @@ function mainController($scope, $http) {
             });
     };
 
-    // delete a todo after checking it
     $scope.deleteCompromisso = function(id) {
         $http.delete('/api/compromissos/' + id)
             .success(function(data) {
