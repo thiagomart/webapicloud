@@ -49,7 +49,5 @@ exports.apagar_compromisso = function(req, res) {
     if (err)
       return err;
     return 'Compromisso removido com sucesso!';
-  }).then(function(response){
-    res.send(response);
   });
 };

@@ -21,8 +21,8 @@ module.exports = function(app) {
     	res.send("Atualiza compromisso...");
     });
     app.post('/compromissos/delete/', function(req, res){
-    	compromissos.apagar_compromisso(req, res);
-    	res.send("Apagando...");
+    	const retorno = compromissos.apagar_compromisso(req, res);
+    	res.send(retorno);
     });
   
 };
