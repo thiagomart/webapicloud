@@ -20,7 +20,7 @@ module.exports = function(app) {
     	compromissos.atualizar_compromisso(req, res);
     	res.send("Atualiza compromisso...");
     });
-    app.delete('/compromissos/delete/', function(req, res){
+    app.post('/compromissos/delete/', function(req, res){
     	compromissos.apagar_compromisso(req, res);
     	res.send("Apagando...");
     });

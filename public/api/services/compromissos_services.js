@@ -29,7 +29,6 @@ exports.buscar_compromisso = function(req, res) {
     return compromisso;
   }).then(function(response){
     res.send(response);
-
   });
 };
 
@@ -37,8 +36,8 @@ exports.buscar_compromisso = function(req, res) {
 exports.atualizar_compromisso = function(req, res) {
   Compromisso.findOneAndUpdate({_id: req.query.id}, req.body, {new: true}, function(err, compromisso) {
     if (err)
-      res.send(err);
-    res.json(compromisso);
+      return err;
+    return compromisso;
   });
 };
 
@@ -48,7 +47,9 @@ exports.apagar_compromisso = function(req, res) {
     _id: req.query.id
   }, function(err, compromisso) {
     if (err)
-      res.send(err);
-    res.json({ message: 'Compromisso removido com sucesso!' });
+      return err;
+    return 'Compromisso removido com sucesso!';
+  }).then(function(response){
+    res.send(response);
   });
 };
