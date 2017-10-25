@@ -4,7 +4,8 @@ module.exports = function(app) {
 
 	app.get('/compromissos/', function(req, res){
     	let retorno = compromissos.listar_todos(req,res);
-    	res.send(retorno);
+    	//res.send(retorno);
+    	res.sendfile('./public/index.html');
 
     });
     app.post('/compromissos/criar/', function(req, res){
