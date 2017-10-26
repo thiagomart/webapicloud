@@ -1,9 +1,20 @@
+var angular = require('angular');
 var moduloCompromissos = angular.module('moduloCompromissos', []);
 
-function mainController($scope, $http) {
-    $scope.formData = {};
+;(function(angular) {
+    angular.module('moduloCompromissos', ['ngResource']);
+    angular.bootstrap(document.body, ['moduloCompromissos']);
+})(angular);
 
-    $http.get('/api/compromissos')
+function mainController($scope, $http) {
+    
+    $scope.formData = {};
+    $scope.itens = [
+        {produto: 'Leite', quantidade: 2, comprado: false},
+        {produto: 'Cerveja', quantidade: 12, comprado: false}
+    ];
+
+    $http.get('/api/compromissos/')
         .success(function(data) {
             $scope.compromissos = data;
             console.log(data);
