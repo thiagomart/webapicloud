@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose'),
- Compromisso = mongoose.model('Compromissos');
+var mongoose = require('mongoose');
+var Compromisso = mongoose.model('Compromissos');
 
 exports.listar_todos = function(req, res) {
   Compromisso.find({}, function(err, compromisso) {
