@@ -4,10 +4,12 @@ var mongoose = require('mongoose');
 var Compromisso = mongoose.model('Compromissos');
 
 exports.listar_todos = function(req, res) {
-  Compromisso.find({}, function(err, compromisso) {
-    if (err)
-      return err;
-    return compromisso;
+    
+   Compromisso.find(function(err, compromissos) {
+      if (err)
+          res.send(err)
+        
+      res.json(compromissos); 
   });
 };
 
@@ -23,7 +25,9 @@ exports.criar_compromisso = function(req, res) {
 
 
 exports.buscar_compromisso = function(req, res) {
-  Compromisso.findById(req.query.id, function(err, compromisso) {
+  var id = mongoose.Types.ObjectId(req.query.id); 
+  console.log(id);
+  Compromisso.findOne({_id:id}, function(err, compromisso) {
     if (err)
       return err;
     return compromisso;

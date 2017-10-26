@@ -1,29 +1,11 @@
 'use strict';
 module.exports = function(app) {
-  var compromissos = require('../services/compromissos_services');
+  var services = require('../services/compromissos_services');
 
-	app.get('/compromissos/', function(req, res){
-    	let retorno = compromissos.listar_todos(req,res);
-    	//res.send(retorno);
-    	res.sendfile('./public/index.html');
-
-    });
-    app.post('/compromissos/criar/', function(req, res){
-    	console.log(req.body);
-    	const  retorno = compromissos.criar_compromisso(req, res);
-    	res.send(retorno);
-    });
-    app.get('/compromissos/busca/', function(req, res){
-    	console.log(req.query);
-    	const retorno = compromissos.buscar_compromisso(req,res);
-    });
-    app.put('/compromissos/atualiza/', function(req, res){
-    	compromissos.atualizar_compromisso(req, res);
-    	res.send("Atualiza compromisso...");
-    });
-    app.post('/compromissos/delete/', function(req, res){
-    	const retorno = compromissos.apagar_compromisso(req, res);
-    	res.send(retorno);
-    });
+	app.get('/compromissos', services.listar_todos);
+    app.post('/compromissos', services.criar_compromisso);
+    app.get('/compromissos/:id', services.buscar_compromisso);
+    app.put('/compromissos', services.atualizar_compromisso);
+    app.delete('/compromissos', services.apagar_compromisso);
   
 };

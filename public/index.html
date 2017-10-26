@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html ng-app="moduloCompromissos">
 <head>
 	<meta charset="utf-8">
@@ -14,39 +13,25 @@
 		#todo-form 	 			{ margin-bottom:50px; }
 	</style>
 
-	<!--script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script-->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
 	<script src="core.js"></script>
-
-
 </head>
 
 <body ng-controller="mainController">
-
-   <table>
-      <thead>
-        <tr>
-          <th>Produto</th>
-          <th>Quantidade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in itens">
-          <td><strong>{{ item.produto }}</strong></td>
-          <td>{{ item.quantidade }}</td>
-        </tr>
-      </tbody>
-    </table>
 	<div class="container">
 		<div class="jumbotron text-center">
 			<h1>Gerenciador de Compromissos</h1>
-		</div>
+		</div>			
 		<div id="compromisso-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
+				<h2> Meus Compromissos </h2>
 				<div class="checkbox" ng-repeat="compromisso in compromissos">
+					
+					<div>Marcar como concluído:</div>
 					<label>
-						<input type="checkbox" ng-click="deleteCompromisso(compromisso._id)"> {{ compromisso.text }}
+						 <input type="checkbox" ng-click="deleteCompromisso(compromisso._id)"> {{ compromisso.titulo }} Descrição: {{ compromisso.descricao }}  Data: {{ compromisso.data }} 
 					</label>
 				</div>
 
@@ -54,19 +39,14 @@
 					<span class="fa fa-spinner fa-spin fa-3x"></span>
 				</p>
 				<table ng-table ="usersTable">
-					<tr ng-repeat="user in users">
-						<td data-title="'Name'">{{user.name}}</td>
-						<td data-title="'Age'">{{user.age}}</td>
-						<td data-title="'Location'">{{user.location}}</td>
-					</tr>
-				</table>
+				
 			</div>
 		</div>
 		<div id="compromisso-form" class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<form>
 					<div class="form-group">
-						<input type="text" class="form-control input-lg text-center" placeholder="Insira aqui o seu compromisso" ng-model
+						<input type="text" class="form-control input-lg text-center" placeholder="Insira aqui o seu titulo do compromisso" ng-model
 						="compromisso.titulo">
 						<input type="text" class="form-control input-lg text-center" placeholder="Insira a descrição" ng-model="compromisso.descricao">
 						<input type="text" class="form-control input-lg text-center" placeholder="Insira aqui a data e hora" ng-model="compromisso.data">

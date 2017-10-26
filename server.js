@@ -1,17 +1,25 @@
-var express = require('express');
-var app = express();
+var express  = require('express');
+var app      = express();                         
+var mongoose = require('mongoose');               
+var morgan = require('morgan');             
+var bodyParser = require('body-parser');    
+var methodOverride = require('method-override'); 
 var port = process.env.PORT || 3000;
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+
 
   
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://thiagomartins:martins@ds227555.mlab.com:27555/dbmongo_cloud', { useMongoClient: true }); 
 var compromisso = require('./public/api/models/compromisso')(mongoose);
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(bodyParser.json({type: 'application/vnd.api+json'}));
+ 	app.use(express.static(__dirname + '/public'));                 
+    app.use(morgan('dev'));                                         
+    app.use(bodyParser.urlencoded({'extended':'true'}));            
+    app.use(bodyParser.json());                                     
+    app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+    app.use(methodOverride());
+
+
 
 var routes = require('./public/api/routes/compromissos_routes');
 routes(app); 
