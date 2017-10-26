@@ -5,15 +5,14 @@ function mainController($scope, $http) {
      
     vm.formData = {};
     vm.compromissos = [];
-
-
     vm.obterCompromissos = obtemCompromissos;    
 
     vm.obterCompromissos();
 
     function obtemCompromissos(){                
-        $http.get('/compromissos/').then(function(data){
-            vm.compromissos = data;
+        $http.get('/compromissos/').then(function(dados){
+            console.log(dados.data);
+            vm.compromissos = dados.data;
         });        
     }
 
