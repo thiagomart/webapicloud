@@ -19,8 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
 app.use(methodOverride());
 
-
-
 var routes = require('./public/api/routes/compromissos_routes');
 routes(app); 
 

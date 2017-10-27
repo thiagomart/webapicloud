@@ -6,21 +6,10 @@
     <title>Gerenciador de Compromissos</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <style>
-        html
-        {
-            overflow-y: scroll;
-        }
-
-        body
-        {
-            padding-top: 50px;
-        }
-    </style>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-    <script src="core.js"></script>
+    <script src="app.js"></script>
 </head>
-<body ng-controller="mainController">
+<body style="padding-top: 50px;" ng-controller="mainController">
     <div class="container">
         <div class="text-center">
             <h2>Gerenciador de Compromissos</h2>
@@ -61,8 +50,7 @@
                             <th>Descrição</th>
                             <th>Data</th>
                             <th>Hora</th>
-                            <th>Concluído</th>
-                            <th>Excluir</th>
+                            <th>Concluído</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -72,9 +60,7 @@
                             <td>{{compromisso.data | date : 'dd/MM/yyyy'}}</td>
                             <td>{{compromisso.data | date : 'HH:mm:ss'}}</td>
                             <td>
-                                <input type="checkbox" ng-click="excluirCompromisso(compromisso._id)"></td>
-                            <td>
-                                <a ng-click="excluir(compromisso)">Excluir</a>
+                                <input type="checkbox" ng-click="excluirCompromisso(compromisso._id)">
                             </td>
                         </tr>
                     </tbody>
@@ -103,6 +89,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
