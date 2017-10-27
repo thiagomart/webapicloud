@@ -2,7 +2,7 @@
 
 module.exports = function(mongoose) {
 var schema_compromisso = new mongoose.Schema({
-  Titulo: {
+  titulo: {
     type: String
   },  
   descricao: {

@@ -3,37 +3,43 @@
 var mongoose = require('mongoose');
 var Compromisso = mongoose.model('Compromissos');
 
-exports.listar_todos = function(req, res) {
-    
+exports.listar_todos = function(req, res) {    
    Compromisso.find(function(err, compromissos) {
-      if (err)
+      if (err){
           res.send(err)
-        
+      }
       res.json(compromissos); 
   });
 };
 
 exports.criar_compromisso = function(req, res) {
-  var novo_compromisso = new Compromisso(req.body);
+  var novo_compromisso = new Compromisso(req.body.text);
   console.log(novo_compromisso);
   novo_compromisso.save(function(err, compromisso) {
-    if (err)
-      return err;
-    return compromisso;
+    if (err){
+        res.send(err)
+    }
+    res.json(compromisso); 
   });
 };
 
 
 exports.buscar_compromisso = function(req, res) {
   var id = mongoose.Types.ObjectId(req.query.id); 
-  console.log(id);
-  Compromisso.findOne({_id:id}, function(err, compromisso) {
+  console.log(id);  
+    Compromisso.findById({_id:id}, function(err, compromissos) {
+        if (err)
+            res.send(err)
+
+        res.json(compromissos); 
+    });
+  /*Compromisso.findOne({_id:id}, function(err, compromisso) {
     if (err)
       return err;
     return compromisso;
   }).then(function(response){
     res.send(response);
-  });
+  });*/
 };
 
 
