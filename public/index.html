@@ -56,7 +56,7 @@
                     <tbody>
                         <tr ng-repeat="compromisso in compromissos | filter:searchText">
                             <td>{{compromisso.titulo  | limitTo: 30}}</td>
-                            <td>{{compromisso.descricao  | limitTo: 30}}</td>
+                            <td>{{compromisso.descricao  | limitTo: 50}}</td>
                             <td>{{compromisso.data | date : 'dd/MM/yyyy'}}</td>
                             <td>{{compromisso.data | date : 'HH:mm:ss'}}</td>
                             <td>
