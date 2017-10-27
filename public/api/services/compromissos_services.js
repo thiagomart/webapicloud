@@ -13,9 +13,14 @@ exports.listar_todos = function(req, res) {
 };
 
 exports.criar_compromisso = function(req, res) {
-  var novo_compromisso = new Compromisso(req.body.text);
-  console.log(novo_compromisso);
-  novo_compromisso.save(function(err, compromisso) {
+
+  console.log(req.body);
+
+  Compromisso.create({
+            titulo : req.body.titulo,
+            descricao : req.body.descricao,
+            data : req.body.data
+        }, function(err, compromisso) {            
     if (err){
         res.send(err)
     }
