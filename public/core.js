@@ -7,11 +7,10 @@ function mainController($scope, $http) {
     vm.compromissos = [];
     vm.obterCompromissos = obtemCompromissos;    
     vm.adicionarCompromisso = incluirCompromisso;
-
+    vm.excluirCompromisso = excluiCompromisso;
 
 
     vm.obterCompromissos();
-    //vm.adicionarCompromisso();
 
     function obtemCompromissos(){                
         $http.get('/compromissos/').then(function(dados){            
@@ -21,18 +20,22 @@ function mainController($scope, $http) {
 
     function incluirCompromisso(){        
        // if (validarPreenchimentoCamposObrigatorios()){   
-
         var compromissoAdicao = {
-              titulo:vm.compromisso.titulo,
-              descricao:vm.compromisso.descricao,
-              data:vm.compromisso.data
+          titulo:vm.compromisso.titulo,
+          descricao:vm.compromisso.descricao,
+          data:vm.compromisso.data
         };
 
-
-            $http.post('/compromissos/', compromissoAdicao).then(function(data){
-                 vm.obterCompromissos();
-            });  
+        $http.post('/compromissos/', compromissoAdicao).then(function(data){
+             vm.obterCompromissos();
+        });  
         //}
+    }
+    
+    function excluiCompromisso(id){        
+        $http.delete('/compromissos/' + id).then(function(data){
+             vm.obterCompromissos();
+        });  
     }
 
     function validarPreenchimentoCamposObrigatorios(){

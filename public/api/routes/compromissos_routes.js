@@ -6,6 +6,6 @@ module.exports = function(app) {
     app.post('/compromissos', services.criar_compromisso);
     app.get('/compromissos/:id', services.buscar_compromisso);
     app.put('/compromissos', services.atualizar_compromisso);
-    app.delete('/compromissos', services.apagar_compromisso);
+    app.delete('/compromissos/:id', services.apagar_compromisso);
   
 };
