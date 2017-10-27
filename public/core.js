@@ -18,18 +18,15 @@ function mainController($scope, $http) {
         });        
     }
 
-    function incluirCompromisso(){        
-       // if (validarPreenchimentoCamposObrigatorios()){   
+    function incluirCompromisso(){               
         var compromissoAdicao = {
           titulo:vm.compromisso.titulo,
           descricao:vm.compromisso.descricao,
           data:vm.compromisso.data
         };
-
         $http.post('/compromissos/', compromissoAdicao).then(function(data){
              vm.obterCompromissos();
         });  
-        //}
     }
     
     function excluiCompromisso(id){        
